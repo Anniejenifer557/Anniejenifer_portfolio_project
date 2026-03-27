@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 
-mongoose.connect("mongodb+srv://anniejenifer0507_db_user:<db_password>@cluster0.xs8flvx.mongodb.net/?appName=Cluster0")
+mongoose.connect("mongodb+srv://anniejenifer0507_db_user:Anniejenifer@557>@cluster0.xs8flvx.mongodb.net/portfolioDB?appName=Cluster0")
 .then(() => console.log("MongoDB Connected ✅"))
 .catch(err => console.log(err));
 const app = express();

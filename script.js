@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded",function () {
 document.getElementById("feedbackForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -11,6 +12,8 @@ document.getElementById("feedbackForm").addEventListener("submit", function(even
         body: JSON.stringify({ name: nameValue, email: emailValue, message: messageValue })
     })
     .then(res => res.text())
-    .then(data => alert(data))
-    .catch(err => { console.log(err); alert("Error ❌"); });
+    .then(data => alert(data);
+    document.getElementById("feedbackForm").reset();
+    .catch(err => { console.log(err); 
+        alert("Error ❌"); });
 });
