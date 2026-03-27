@@ -5,7 +5,7 @@ document.getElementById("feedbackForm").addEventListener("submit", function(even
     const emailValue = document.getElementById("femail").value;
     const messageValue = document.getElementById("fmsg").value;
 
-    fetch("https://anniejenifer-portfolio-project-2.onrender.com/", {
+    fetch("https://anniejenifer-portfolio-project-2.onrender.com/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: nameValue, email: emailValue, message: messageValue })
