@@ -4,7 +4,7 @@ document.getElementById("feedbackForm").addEventListener("submit", function(even
 
     const nameValue = document.getElementById("fname").value;
     const emailValue = document.getElementById("femail").value;
-    const messageValue = document.getElementById("fmsg").value;
+    const messageValue = document.getElementById("ffeedback").value;
 
     fetch("https://anniejenifer-portfolio-project-2.onrender.com/feedback", {
         method: "POST",
@@ -12,8 +12,10 @@ document.getElementById("feedbackForm").addEventListener("submit", function(even
         body: JSON.stringify({ name: nameValue, email: emailValue, message: messageValue })
     })
     .then(res => res.text())
-    .then(data => alert(data);
+    .then(data => {
+        alert(data);
     document.getElementById("feedbackForm").reset();
+    })
     .catch(err => { console.log(err); 
         alert("Error ❌"); });
 });
