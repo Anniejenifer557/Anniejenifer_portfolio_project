@@ -1,16 +1,20 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-
-mongoose.connect("mongodb+srv://anniejenifer0507_db_user:Anniejenifer557@cluster0.xs8flvx.mongodb.net/portfolioDB=Cluster0")
-.then(() => console.log("MongoDB Connected ✅"))
-.catch(err => console.log(err));
 const app = express();
 
+app.use(cors({
+  origin: "*"
+}));
+app.use(express.json());
 
-app.use(cors());
-app.use(express.json());const feedbackSchema = new mongoose.Schema({
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB Connected ✅"))
+.catch(err => console.log(err));
+
+const feedbackSchema = new mongoose.Schema({
   name: String,
   email: String,
   message: String
@@ -18,14 +22,11 @@ app.use(express.json());const feedbackSchema = new mongoose.Schema({
 
 const Feedback = mongoose.model("Feedback", feedbackSchema);
 
-// ✅ POST ROUTE
 app.post("/feedback", async (req, res) => {
   console.log("DATA RECEIVED:", req.body);
-
   try {
     const newFeedback = new Feedback(req.body);
     await newFeedback.save();
-
     res.send("Saved ✅");
   } catch (err) {
     console.log(err);
@@ -38,7 +39,6 @@ app.get("/", (req, res) => {
 });
 
 const PORT = 5000;
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
